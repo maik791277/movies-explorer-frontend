@@ -14,8 +14,6 @@ function Login(props) {
       navigate('/');
    }
 
-   console.log(values)
-
    return(
    <section className="register">
       <div className="register__container">

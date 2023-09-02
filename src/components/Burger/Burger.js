@@ -21,7 +21,6 @@ function Burger(props) {
       } else {
          document.body.classList.remove('scroll-locked');
       }
-      console.log('asd')
    }, [menuOpen]);
 
    return(
