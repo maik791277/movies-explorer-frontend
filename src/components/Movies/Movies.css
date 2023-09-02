@@ -1,0 +1,28 @@
+.movies {
+    padding: 0 70px;
+}
+
+.movies__container {
+    margin-top: 116px;
+}
+
+
+@media screen and (max-width: 880px) {
+    .movies {
+        padding: 0 30px;
+    }
+
+    .movies__container {
+        margin-top: 130px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .movies {
+        padding: 0 10px;
+    }
+
+    .movies__container {
+        margin-top: 90px;
+    }
+}
