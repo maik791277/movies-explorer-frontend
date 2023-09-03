@@ -43,7 +43,7 @@ function App() {
    }, [location.pathname]);
 
    return (
-      <div className="app__body">
+      <div className="app">
          <div className="app__page">
             {!isNotHeader && <Header isAuthorization={isAuthorization} />}
             <div className="content">

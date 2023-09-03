@@ -27,7 +27,9 @@ function Header(props) {
                <div className="header__user">
                   <CustomNavLink className="header__user-link"  to="/profile">
                      <p className={`header__user-text ${isOnHomePage ? "header__user-text_white" : ""}`}>Аккаунт</p>
-                     <img className="header__user-icon" src={isOnHomePage ? userIconWhite : userIcon}/>
+                     <div className={`header__user-link-container-icon ${isOnHomePage && "header__user-link-container-icon_color"}`}>
+                        <img className="header__user-icon" src={userIcon} alt="Иконка сылки на профиль"/>
+                     </div>
                   </CustomNavLink>
                </div>
                <Burger isAuthorization={props.isAuthorization}/>

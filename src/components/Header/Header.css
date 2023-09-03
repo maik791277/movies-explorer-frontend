@@ -141,8 +141,17 @@
     text-decoration: none;
 }
 
-.header__user-icon {
-    margin: 8px;
+.header__user-link-container-icon {
+    width: 26px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__user-link-container-icon_color {
+    border-radius: 4px;
+    background: #2BE080;
 }
 
 .header__user-text_white {
