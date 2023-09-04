@@ -1,15 +1,13 @@
 import aboutMeImage from '../../../images/AFKmRfaf6X4-min.jpg'
 import Portfolio from "../Portfolio/Portfolio";
 import {Element} from "react-scroll";
+import SectionHeader from "../SectionHeader/SectionHeader";
 
 function AboutMe() {
    return(
       <section className="aboutMe">
          <Element name="about" className="container">
-            <div className="section__header">
-               <h2 className="section__title">Студент</h2>
-               <div className="section__horizontal-line"></div>
-            </div>
+            <SectionHeader title="Студент" />
             <div className="aboutMe__info">
                <div className="aboutMe__info-text">
                   <h3 className="aboutMe__name">Владислав</h3>
@@ -18,7 +16,7 @@ function AboutMe() {
                      и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить.
                      С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке,
                      начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
-                  <a className="aboutMe__github-link" href="https://github.com/">Github</a>
+                  <a className="aboutMe__github-link" href="https://github.com/" target="_blank">Github</a>
                </div>
                <div className="aboutMe__image">
                   <img className="aboutMe__photo" src={aboutMeImage} alt="Фотография Владислава Потылицына"/>

@@ -39,6 +39,11 @@
     display: flex;
     justify-content: space-between;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
 }
 
 .portfolio__description {
@@ -105,7 +110,7 @@
     }
 
     .portfolio {
-        min-height: 375px;
+        min-height: 290px;
     }
 
 }

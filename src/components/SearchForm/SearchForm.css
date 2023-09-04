@@ -4,9 +4,23 @@
 
 .searchForm__form {
     width: 100%;
+}
+
+.searchForm__form-search-field {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+}
+
+.searchForm__form-search-field::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
 }
 
 .searchForm__icon {
@@ -62,7 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 29px;
+    margin-top: 40px;
 }
 
 .searchForm__filter-title {
@@ -117,6 +131,6 @@
     }
 
     .searchForm__filter {
-        margin-top: 42px;
+        margin-top: 48px;
     }
 }

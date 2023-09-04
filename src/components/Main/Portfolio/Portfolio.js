@@ -23,7 +23,7 @@ function Portfolio() {
                {myArray.map((item, index) => {
                   return(
                   <li key={index} className="portfolio__item">
-                     <a className="portfolio__link" href={item.link}>
+                     <a className="portfolio__link" href={item.link} target="_blank">
                         <p className="portfolio__description">{item.text}</p>
                         <img className="portfolio__arrow" src={svgArrow} alt="Стрелка"/>
                      </a>

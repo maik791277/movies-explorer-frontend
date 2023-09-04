@@ -43,7 +43,7 @@ function Profile(props) {
       {isEditing ?
       <form className="profile__container" noValidate>
          <div className="profile__item">
-            <div className="profile__item-label">Имя</div>
+            <label className="profile__item-label">Имя</label>
             <input
             className="profile__item-value"
             type="text"
@@ -56,10 +56,9 @@ function Profile(props) {
             onChange={handleChange}
             required
             autoFocus/>
-            <div className="profile__separator"></div>
          </div>
          <div className="profile__item">
-            <div className="profile__item-label">E-mail</div>
+            <label className="profile__item-label">E-mail</label>
             <input
             className="profile__item-value"
             type="email"
@@ -72,37 +71,34 @@ function Profile(props) {
             onChange={handleChange}
             required/>
          </div>
+         <div className="profile__button-container-form">
+            <p className={`profile__input-error`}>
+               {Object.values(errors).some(error => error) ? "При обновлении профиля произошла ошибка." : ""}
+            </p>
+            <button type="submit" className={`profile__button-form ${!isValid ? 'profile__button-form_error' : ''}`} type="submit" onClick={handleSubmit}>Сохранить</button>
+         </div>
       </form>
       :
       <div className="profile__container">
          <div className="profile__item">
             <div className="profile__item-label">Имя</div>
             <div className="profile__item-value">{isProfileMasive.name}</div>
-            <div className="profile__separator"></div>
          </div>
          <div className="profile__item">
             <div className="profile__item-label">E-mail</div>
             <div className="profile__item-value">{isProfileMasive.email}</div>
          </div>
       </div>}
-      <div className="profile__links">
-         {isEditing ?
-         <div className="profile__button-container-form">
-            <p className={`profile__input-error`}>
-               {Object.values(errors).some(error => error) ? "При обновлении профиля произошла ошибка." : ""}
-            </p>
-            <button className={`profile__button-form ${!isValid ? 'profile__button-form_error' : ''}`} onClick={handleSubmit}>Сохранить</button>
-         </div>
-         :
+      {!isEditing && <div className="profile__links">
          <div className="profile__button-container">
-            <button className="profile__button" onClick={editingClick}>
+            <button type="button" className="profile__button" onClick={editingClick}>
                Редактировать
             </button>
-            <button className="profile__button" onClick={isAuthorizedExit}>
+            <button type="button" className="profile__button" onClick={isAuthorizedExit}>
                Выйти из аккаунта
             </button>
-         </div>}
-      </div>
+         </div>
+      </div>}
    </section>
    );
 }

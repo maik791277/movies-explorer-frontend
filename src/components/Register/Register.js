@@ -18,7 +18,7 @@ function Register() {
          toLink="/signin"
          textLink="Войти">
             <InputForm
-            className="register_input"
+            className="register__input"
             name="register_name"
             type="text"
             id="register-name-input"
@@ -31,7 +31,7 @@ function Register() {
             isValid={isValid}
             />
             <InputForm
-            className="register_input"
+            className="register__input"
             name="register_email"
             id="register_email-input"
             type="email"
@@ -44,7 +44,7 @@ function Register() {
             isValid={isValid}
             />
             <InputForm
-            className="register_input"
+            className="register__input"
             name="register_password"
             id="profile-name-input"
             type="password"

@@ -36,18 +36,26 @@ function MoviesCard(props) {
    return(
    <div className="moviesCard" key={props.key}>
       <div className="moviesCard__content">
-         <h2 className="moviesCard__title">{props.name}</h2>
-         <p className="moviesCard__description">{formattedTime}</p>
+         <div className="moviesCard__info">
+            <h2 className="moviesCard__title">{props.name}</h2>
+            <p className="moviesCard__description">{formattedTime}</p>
+         </div>
          {isSavedPage
-         ? <img className="moviesCard__favourites" src={iconFavouritesromDelete} alt="iconFavouritesromDelete" onClick={handleRemoveClick}/>
-         : <img
+         ?
+         <button
             className="moviesCard__favourites"
-            src={isHovered ? iconFavouritesTrue : (favoriteMovies ? iconFavouritesTrue : iconFavouritesrom)}
-            alt="iconFavourites"
+            type="button"
+            onClick={handleRemoveClick}>
+            <img src={iconFavouritesromDelete} alt="Иконка кнопки для удаления филма"/>
+         </button>
+         : <button
+            className="moviesCard__favourites"
+            type="button"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onClick={toggleFavoriteMovie}
-         />}
+            onClick={toggleFavoriteMovie}>
+            <img src={isHovered ? iconFavouritesTrue : (favoriteMovies ? iconFavouritesTrue : iconFavouritesrom)} alt="Иконка кнопки для добавления фильма"/>
+         </button>}
       </div>
       <div className="moviesCard__image-container">
          <img className="moviesCard__image" src={props.image} alt={props.name}/>

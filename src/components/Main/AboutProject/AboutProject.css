@@ -4,24 +4,6 @@
     background-color: #FFFFFF;
 }
 
-.section__header {
-    padding-top: 110px;
-}
-
-.section__title {
-    color: #000;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.88px;
-    margin-bottom: 23px;
-}
-
-.section__horizontal-line {
-    border-bottom: 1px solid #000;
-}
-
 .aboutProject__list {
     margin-top: 70px;
     padding: 0;
@@ -85,7 +67,7 @@
     line-height: normal;
 }
 
-.aboutProject__timeline_duration__frontend {
+.aboutProject__timeline-duration_frontend {
     background-color: #F2F2F2;
 }
 
@@ -115,10 +97,6 @@
         grid-template-columns: 21% 79%;
         margin-top: 92px;
     }
-
-    .section__header {
-        padding-top: 91px;
-    }
 }
 
 @media screen and (max-width: 600px) {
@@ -134,16 +112,6 @@
 }
 
 @media screen and (max-width: 450px) {
-    .section__title {
-        font-size: 18px;
-        letter-spacing: -0.72px;
-        margin-bottom: 28px;
-    }
-
-    .section__header {
-        padding-top: 72px;
-    }
-
     .aboutProject__subtitle {
         font-size: 18px;
         letter-spacing: -0.72px;

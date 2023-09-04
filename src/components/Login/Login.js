@@ -15,8 +15,8 @@ function Login(props) {
    }
 
    return(
-   <section className="register">
-      <div className="register__container">
+   <section className="login">
+      <div className="login__container">
          <RegAuthBlock
          errors={errors}
          isValid={isValid}
@@ -27,7 +27,7 @@ function Login(props) {
          toLink="/signup"
          textLink="Регистрация">
             <InputForm
-            className="register_input"
+            className="login__input"
             name="register_email"
             id="register_email-input"
             type="email"
@@ -40,7 +40,7 @@ function Login(props) {
             isValid={isValid}
             />
             <InputForm
-            className="register_input"
+            className="login__input"
             name="register_password"
             id="profile-name-input"
             type="password"

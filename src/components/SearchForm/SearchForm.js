@@ -14,23 +14,25 @@ function SearchForm(props) {
    return(
       <section className="searchForm">
          <form className="searchForm__form">
-            <img className="searchForm__icon" src={searchIcon} alt="Иконка поиска"/>
-            <input
-            className="searchForm__input"
-            type="text"
-            placeholder="Фильм"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button onClick={handleSearch} className="searchForm__button">
-               <img className="searchForm__buttonIcon" src={searchButtonIcon} alt="Иконка кнопки поиска"/>
-            </button>
+            <div className="searchForm__form-search-field">
+               <img className="searchForm__icon" src={searchIcon} alt="Иконка поиска"/>
+               <input
+               className="searchForm__input"
+               type="text"
+               placeholder="Фильм"
+               value={searchText}
+               onChange={(e) => setSearchText(e.target.value)}
+               required
+               />
+               <button onClick={handleSearch} type="submit" className="searchForm__button">
+                  <img className="searchForm__buttonIcon" src={searchButtonIcon} alt="Иконка кнопки поиска"/>
+               </button>
+            </div>
+            <div className="searchForm__filter">
+               <FilterCheckbox className="searchForm__filterCheckbox" isChecked={props.showShortMovies} toggleSwitch={props.setShowShortMovies}/>
+               <p className="searchForm__filter-title">Короткометражки</p>
+            </div>
          </form>
-         <div className="searchForm__horizontal-line"></div>
-         <div className="searchForm__filter">
-            <FilterCheckbox className="searchForm__filterCheckbox" isChecked={props.showShortMovies} toggleSwitch={props.setShowShortMovies}/>
-            <p className="searchForm__filter-title">Короткометражки</p>
-         </div>
       </section>
    );
 }

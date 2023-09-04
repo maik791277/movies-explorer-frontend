@@ -10,20 +10,34 @@ function Header(props) {
 
    const headerAuthorization = location.pathname === '/signup' || location.pathname === '/signin';
  return(
-   <header className={`header ${isOnHomePage ? "header__color_main" : ""}`}>
+   <header className={`header ${isOnHomePage ? "header_color" : ""}`}>
       <div className="header__container">
          <Link className="header__logo-link" to="/">
             <img className="header__logo" src={logo} alt="Логотип сайта" />
          </Link>
-         <div className="header__container-content">
+         <nav className="header__container-content">
             {props.isAuthorization ?
-            <div className="header__inner-div--type-2">
-               <div className="header__navigation">
-                  <CustomNavLink className={`header__navigation-link ${isOnHomePage ? "header__navigation-link-homePage" : ""}`} classNameActive="header__navigation-link-active" to="/movies">Фильмы
-                  </CustomNavLink>
-                  <CustomNavLink className={`header__navigation-link ${isOnHomePage ? "header__navigation-link-homePage" : ""}`} classNameActive="header__navigation-link-active" to="/saved-movies">Сохранённые фильмы
-                  </CustomNavLink>
-               </div>
+            <div className="header__inner-div-type-2">
+               <ul className="header__navigation">
+                  <li className={"header__navigation-item"}>
+                     <CustomNavLink
+                        className={`header__navigation-link 
+                        ${isOnHomePage ? "header__navigation-link-homePage" : ""}`}
+                        classNameActive="header__navigation-link-active"
+                        to="/movies">
+                        Фильмы
+                     </CustomNavLink>
+                  </li>
+                  <li className={"header__navigation-item"}>
+                     <CustomNavLink
+                        className={`header__navigation-link 
+                        ${isOnHomePage ? "header__navigation-link-homePage" : ""}`}
+                        classNameActive="header__navigation-link-active"
+                        to="/saved-movies">
+                        Сохранённые фильмы
+                     </CustomNavLink>
+                  </li>
+               </ul>
                <div className="header__user">
                   <CustomNavLink className="header__user-link"  to="/profile">
                      <p className={`header__user-text ${isOnHomePage ? "header__user-text_white" : ""}`}>Аккаунт</p>
@@ -39,7 +53,7 @@ function Header(props) {
                <Link className={`header__registration-link ${headerAuthorization && "header__registration-link_color"}`} to="/signup">Регистрация</Link>
                <Link className="header__login-link" to="/signin">Войти</Link>
             </div>}
-         </div>
+         </nav>
       </div>
    </header>
  );

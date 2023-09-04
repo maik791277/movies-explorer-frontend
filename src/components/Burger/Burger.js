@@ -24,41 +24,47 @@ function Burger(props) {
    }, [menuOpen]);
 
    return(
-   <section className="Burger">
-      <div className="burger-button__open">
-         <button className={`burger-button__icon`} onClick={toggleMenu}>
-            <span className={`burger-button__line`}></span>
-            <span className={`burger-button__line`}></span>
-            <span className={`burger-button__line`}></span>
+   <section className="burger">
+      <div className="burger__button-open">
+         <button className={`burger__button-open-icon`} type="button" onClick={toggleMenu}>
+            <span className={`burger__button-open-line`}></span>
+            <span className={`burger__button-open-line`}></span>
+            <span className={`burger__button-open-line`}></span>
          </button>
       </div>
-      <div className={`burger-menu ${menuOpen && 'active'} ${menuClose && 'close'}`}>
-         <div className="burger-menu__container">
-            <button className="burger-button__icon-close" onClick={closeMenu}>
+      <div className={`burger__menu ${menuOpen ? 'burger__menu_active' : "burger__menu_close"}`}>
+         <div className={`burger__menu-container ${menuOpen && 'burger__menu-container_active'} ${menuClose && 'burger__menu-container_close'}`}>
+            <button className="burger__menu-button-close" type="button" onClick={closeMenu}>
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <rect x="7.16016" y="9.28249" width="3" height="22" transform="rotate(-45 7.16016 9.28249)" fill="black"/>
                   <rect x="22.7168" y="7.16117" width="3" height="22" transform="rotate(45 22.7168 7.16117)" fill="black"/>
                </svg>
             </button>
-            <div className="burger-menu__container-block">
-               <div className="burger-menu__container-link">
-                  <CustomNavLink className="burger-menu__link" classNameActive="burger-menu__link-active" to="/" onClick={closeMenu}>
-                     Главная
-                  </CustomNavLink>
-                  <CustomNavLink className="burger-menu__link" classNameActive="burger-menu__link-active" to="/movies" onClick={closeMenu}>
-                     Фильмы
-                  </CustomNavLink>
-                  <CustomNavLink className="burger-menu__link" classNameActive="burger-menu__link-active" to="/saved-movies" onClick={closeMenu}>
-                     Сохранённые фильмы
+            <nav className="burger__menu-container-block">
+               <ul className="burger__menu-container-link">
+                  <li className="burger__menu-container-link-item">
+                     <CustomNavLink className="burger__menu-link" classNameActive="burger__menu-link_active" to="/" onClick={closeMenu}>
+                        Главная
+                     </CustomNavLink>
+                  </li>
+                  <li className="burger__menu-container-link-item">
+                     <CustomNavLink className="burger__menu-link" classNameActive="burger__menu-link_active"  to="/movies" onClick={closeMenu}>
+                        Фильмы
+                     </CustomNavLink>
+                  </li>
+                  <li className="burger__menu-container-link-item">
+                     <CustomNavLink className="burger__menu-link" classNameActive="burger__menu-link_active"  to="/saved-movies" onClick={closeMenu}>
+                        Сохранённые фильмы
+                     </CustomNavLink>
+                  </li>
+               </ul>
+               <div className="burger__menu-container-account">
+                  <CustomNavLink className="burger__menu-user-link" classNameActive="burger__menu-link_active" to="/profile" onClick={closeMenu}>
+                     <p className="burger__menu-user-text">Аккаунт</p>
+                     <img className="burger__menu-user-icon" src={userIcon} alt="Иконка сылки на профиль"/>
                   </CustomNavLink>
                </div>
-               <div className="burger-menu__container--account">
-                  <CustomNavLink className="burger-menu__user-link" classNameActive="burger-menu__link-active" to="/profile" onClick={closeMenu}>
-                     <p className="burger-menu__user-text">Аккаунт</p>
-                     <img className="burger-menu__user-icon" src={userIcon}/>
-                  </CustomNavLink>
-               </div>
-            </div>
+            </nav>
          </div>
       </div>
    </section>

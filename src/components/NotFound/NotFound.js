@@ -16,7 +16,7 @@ function NotFound() {
    <section className="NotFound">
          <h2 className="NotFound__title">404</h2>
          <p className="NotFound__text">Страница не найдена</p>
-         <button className="NotFound__button" onClick={handleButtonClick}>Назад</button>
+         <button type="button" className="NotFound__button" onClick={handleButtonClick}>Назад</button>
    </section>
    );
 }

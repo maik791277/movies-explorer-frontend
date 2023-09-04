@@ -84,6 +84,11 @@
     color: #FF6838;
     text-decoration: none;
     margin-left: 6px;
+    transition: 0.3s;
+}
+
+.regAuthBlock__link:hover {
+    opacity: 0.7;
 }
 
 

@@ -61,7 +61,7 @@ function MoviesCardList(props) {
          </ul>
          {visibleCards < props.moviesArray.length && (
          <div className="moviesCardList__load-more">
-            <button onClick={loadMoreCards} className="moviesCardList__button">
+            <button type="button" onClick={loadMoreCards} className="moviesCardList__button">
                Ещё
             </button>
          </div>

@@ -25,10 +25,12 @@
     padding-left: 14px;
     margin-top: 10px;
     height: 42px;
-    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.inputForm__input:focus {
+    outline: none;
 }
 
 .inputForm__input-error {
     color: red;
-    border: 1px solid red;
 }

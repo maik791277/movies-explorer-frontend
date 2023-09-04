@@ -46,7 +46,7 @@ function App() {
       <div className="app">
          <div className="app__page">
             {!isNotHeader && <Header isAuthorization={isAuthorization} />}
-            <div className="content">
+            <main className="app__content">
                <Routes>
                   <Route path="/" element={<Main />} />
                   <Route path="/movies" element={<Movies />} />
@@ -56,7 +56,7 @@ function App() {
                   <Route path="/signin" element={<Login isAuthorization={setIsAuthorization}/>} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
-            </div>
+            </main>
             {!isNotFooter && <Footer />}
          </div>
       </div>

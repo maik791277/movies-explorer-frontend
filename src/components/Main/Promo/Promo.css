@@ -16,7 +16,7 @@
     line-height: 58px;
 }
 
-.promo__title__major {
+.promo__title-major {
     display: block;
 }
 
@@ -38,8 +38,7 @@
     width: 129px;
     height: 36px;
     border-radius: 3px;
-    border: 1px solid #FFF;
-    opacity: 0.6;
+    border: 1px solid rgba(255, 255, 255, 0.6);
     background-color: rgba(240, 248, 255, 0);
     color: #FFF;
     font-size: 12px;
@@ -48,7 +47,13 @@
     line-height: 16px;
     cursor: pointer;
     margin-top: 146px;
+    transition: 0.3s;
 }
+
+.promo__button:hover {
+    opacity: 0.7;
+}
+
 
 .promo__planet-icon {
     position: absolute;
@@ -87,7 +92,7 @@
         margin-top: 140px;
     }
 
-    .promo__title__major {
+    .promo__title-major {
         display: inline;
     }
 

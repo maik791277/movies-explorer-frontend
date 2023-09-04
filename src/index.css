@@ -27,6 +27,8 @@
 @import "./components/MoviesCardList/MoviesCardList.css";
 /*Profile*/
 @import "./components/Profile/Profile.css";
+/*Login*/
+@import "./components/Login/Login.css";
 /*Register*/
 @import "./components/Register/Register.css";
 /*InputForm*/

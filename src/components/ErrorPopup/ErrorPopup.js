@@ -6,7 +6,7 @@ function ErrorPopup() {
          <div className="errorPopup__content">
             <span className="errorPopup__icon">¯\_(ツ)_/¯</span>
             <p className="errorPopup__text">При авторизации произошла ошибка. Токен не передан или передан не в том формате.</p>
-            <button className="errorPopup__closeButton">Закрыть</button>
+            <button className="errorPopup__closeButton" type="button">Закрыть</button>
          </div>
       </div>
    </section>

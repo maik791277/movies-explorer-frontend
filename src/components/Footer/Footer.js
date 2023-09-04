@@ -16,10 +16,14 @@ function Footer() {
          <div className="footer__horizontal-line"></div>
          <div className="footer__info">
             <p className="footer__year">© {currentYear}</p>
-            <div>
-               <a href="https://practicum.yandex.ru/web/" className="footer__link">Яндекс.Практикум</a>
-               <a href="https://github.com/maik791277" className="footer__link">Github</a>
-            </div>
+            <ul className="footer__links">
+               <li className="footer__link-item">
+                  <a href="https://practicum.yandex.ru/web/" className="footer__link" target="_blank">Яндекс.Практикум</a>
+               </li>
+               <li className="footer__link-item">
+                  <a href="https://github.com/maik791277" className="footer__link" target="_blank">Github</a>
+               </li>
+            </ul>
          </div>
       </div>
    </footer>

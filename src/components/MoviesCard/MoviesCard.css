@@ -11,6 +11,13 @@
 .moviesCard__content {
     position: relative;
     padding: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moviesCard__info {
+    display: flex;
+    flex-direction: column;
 }
 
 .moviesCard__title {
@@ -35,11 +42,11 @@
 }
 
 .moviesCard__favourites {
-    position: absolute;
-    right: 14px;
-    bottom: 19px;
     cursor: pointer;
     transition: transform 0.3s, opacity 0.3s;
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 

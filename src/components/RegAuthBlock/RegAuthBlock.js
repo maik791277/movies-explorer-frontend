@@ -7,7 +7,7 @@ function RegAuthBlock(props) {
       <Link className="regAuthBlock__link-main" to={"/"}>
          <img className="regAuthBlock__link-img" src={logo} alt="Логотип сайта"/>
       </Link>
-      <h2 className="regAuthBlock__heading">{props.title}</h2>
+      <h1 className="regAuthBlock__heading">{props.title}</h1>
       <form className="regAuthBlock__form" onSubmit={props.onSubmit} noValidate>
          <div className="regAuthBlock__form-container">
             {props.children}
