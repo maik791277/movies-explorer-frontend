@@ -38,11 +38,18 @@
     width: 100%;
     padding: 0;
     border: none;
+    border-radius: 8px;
     outline: none;
     background: none;
     margin-top: 3px;
     margin-left: 6px;
+    transition: 0.3s;
 }
+
+.searchForm__input:focus {
+    box-shadow: 0 0 16px 4px rgba(39, 145, 71, 0.51);;
+}
+
 
 .searchForm__input::placeholder {
     color: #A0A0A0;
@@ -77,15 +84,6 @@
     align-items: center;
     justify-content: center;
     margin-top: 40px;
-}
-
-.searchForm__filter-title {
-    color: #000;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
-    margin-left: 12px;
 }
 
 @media screen and (max-width: 880px) {

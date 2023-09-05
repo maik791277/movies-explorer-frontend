@@ -5,12 +5,12 @@ import AboutMe from "./AboutMe/AboutMe";
 
 function Main() {
    return(
-   <section className="main">
+   <div className="main">
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
-   </section>
+   </div>
    );
 }
 

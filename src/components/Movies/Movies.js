@@ -106,12 +106,12 @@ function Movies () {
       setShowShortMovies(!showShortMovies)
    }
    return(
-   <section className="movies">
+   <div className="movies">
       <SearchForm  setShowShortMovies={ClickShowShortMovies} showShortMovies={showShortMovies}/>
-      <section className="movies__container">
+      <div className="movies__container">
          <MoviesCardList  moviesArray={moviesArray} showShortMovies={showShortMovies}/>
-      </section>
-   </section>
+      </div>
+   </div>
    );
  }
 

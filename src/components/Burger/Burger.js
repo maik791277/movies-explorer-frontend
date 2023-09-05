@@ -24,7 +24,7 @@ function Burger(props) {
    }, [menuOpen]);
 
    return(
-   <section className="burger">
+   <div className="burger">
       <div className="burger__button-open">
          <button className={`burger__button-open-icon`} type="button" onClick={toggleMenu}>
             <span className={`burger__button-open-line`}></span>
@@ -33,7 +33,7 @@ function Burger(props) {
          </button>
       </div>
       <div className={`burger__menu ${menuOpen ? 'burger__menu_active' : "burger__menu_close"}`}>
-         <div className={`burger__menu-container ${menuOpen && 'burger__menu-container_active'} ${menuClose && 'burger__menu-container_close'}`}>
+         <div className={`burger__menu-container ${menuOpen ? 'burger__menu-container_active' : ''} ${menuClose ? 'burger__menu-container_close' : ''}`}>
             <button className="burger__menu-button-close" type="button" onClick={closeMenu}>
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <rect x="7.16016" y="9.28249" width="3" height="22" transform="rotate(-45 7.16016 9.28249)" fill="black"/>
@@ -59,7 +59,7 @@ function Burger(props) {
                   </li>
                </ul>
                <div className="burger__menu-container-account">
-                  <CustomNavLink className="burger__menu-user-link" classNameActive="burger__menu-link_active" to="/profile" onClick={closeMenu}>
+                  <CustomNavLink className="burger__menu-user-link" classNameActive="burger__menu-user-link_active" to="/profile" onClick={closeMenu}>
                      <p className="burger__menu-user-text">Аккаунт</p>
                      <img className="burger__menu-user-icon" src={userIcon} alt="Иконка сылки на профиль"/>
                   </CustomNavLink>
@@ -67,7 +67,7 @@ function Burger(props) {
             </nav>
          </div>
       </div>
-   </section>
+   </div>
    );
 }
 

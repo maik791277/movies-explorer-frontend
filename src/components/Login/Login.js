@@ -15,7 +15,7 @@ function Login(props) {
    }
 
    return(
-   <section className="login">
+   <div className="login">
       <div className="login__container">
          <RegAuthBlock
          errors={errors}
@@ -54,7 +54,7 @@ function Login(props) {
             />
          </RegAuthBlock>
       </div>
-   </section>
+   </div>
 
    );
 }

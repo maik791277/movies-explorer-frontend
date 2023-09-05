@@ -1,11 +1,17 @@
-import {useState} from "react";
 
 function FilterCheckbox(props) {
+   const handleChange = (e) => {
+      e.stopPropagation();
+      props.toggleSwitch();
+   };
 
    return (
-   <label className="filterCheckbox">
-      <input type="checkbox" checked={props.isChecked} onChange={props.toggleSwitch} />
+   <label className="filterCheckbox" htmlFor="checkboxId">
+      <input type="checkbox" id="checkboxId" checked={props.isChecked} onChange={handleChange} />
       <span className="filterCheckbox__slider"></span>
+      <span className="filterCheckbox__slider-title">
+         Короткометражки
+      </span>
    </label>
    );
 }

@@ -12,7 +12,7 @@ function SearchForm(props) {
       console.log(searchText)
    };
    return(
-      <section className="searchForm">
+      <div className="searchForm">
          <form className="searchForm__form">
             <div className="searchForm__form-search-field">
                <img className="searchForm__icon" src={searchIcon} alt="Иконка поиска"/>
@@ -30,10 +30,9 @@ function SearchForm(props) {
             </div>
             <div className="searchForm__filter">
                <FilterCheckbox className="searchForm__filterCheckbox" isChecked={props.showShortMovies} toggleSwitch={props.setShowShortMovies}/>
-               <p className="searchForm__filter-title">Короткометражки</p>
             </div>
          </form>
-      </section>
+      </div>
    );
 }
 

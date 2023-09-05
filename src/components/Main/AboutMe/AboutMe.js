@@ -1,12 +1,11 @@
 import aboutMeImage from '../../../images/AFKmRfaf6X4-min.jpg'
 import Portfolio from "../Portfolio/Portfolio";
-import {Element} from "react-scroll";
 import SectionHeader from "../SectionHeader/SectionHeader";
 
 function AboutMe() {
    return(
       <section className="aboutMe">
-         <Element name="about" className="container">
+         <div id="MainAbout" className="container">
             <SectionHeader title="Студент" />
             <div className="aboutMe__info">
                <div className="aboutMe__info-text">
@@ -23,7 +22,7 @@ function AboutMe() {
                </div>
             </div>
             <Portfolio />
-         </Element>
+         </div>
       </section>
    );
 }

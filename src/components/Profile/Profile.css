@@ -59,6 +59,13 @@
     padding: 0;
     text-align: right;
     position: relative;
+    transition: 0.3s;
+}
+
+.profile__item-value:focus {
+    outline: none;
+    box-shadow: 0 0 16px 4px rgba(39, 145, 71, 0.51);
+
 }
 
 .profile__item-value:first-child::after {
@@ -68,10 +75,6 @@
     width: 100%;
     position: absolute;
     bottom: -17px;
-}
-
-.profile__item-value:focus {
-    outline: none;
 }
 
 .profile__links {
@@ -100,6 +103,11 @@
     background: none;
     user-select: none;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile__button:hover {
+    opacity: 0.7;
 }
 
 .profile__button:nth-child(2) {
@@ -125,6 +133,7 @@
     border: none;
     color: white;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .profile__button-form:hover {

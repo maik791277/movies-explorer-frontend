@@ -2,15 +2,15 @@ import svgArrow from "../../../images/text__COLOR_font-main.svg"
 
 const myArray = [
    {
-      link: 'https://github.com/',
+      link: 'https://github.com/maik791277/russian-travel',
       text: 'Статичный сайт'
    },
    {
-      link: 'https://github.com/',
+      link: 'https://github.com/maik791277/mesto',
       text: 'Адаптивный сайт'
    },
    {
-      link: 'https://github.com/',
+      link: 'https://github.com/maik791277/react-mesto-api-full-gha',
       text: 'Одностраничное приложение'
    },
 ];

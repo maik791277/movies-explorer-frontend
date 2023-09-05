@@ -7,7 +7,7 @@ function Register() {
    const {values, handleChange, errors, isValid, resetForm, setValues, setIsValid} = useFormAndValidation({})
 
    return(
-   <section className="register">
+   <div className="register">
       <div className="register__container">
          <RegAuthBlock
          errors={errors}
@@ -58,7 +58,7 @@ function Register() {
             />
          </RegAuthBlock>
       </div>
-   </section>
+   </div>
 
    );
 }

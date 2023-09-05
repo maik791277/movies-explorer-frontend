@@ -25,10 +25,12 @@
     padding-left: 14px;
     margin-top: 10px;
     height: 42px;
+    transition: 0.3s;
 }
 
 .inputForm__input:focus {
     outline: none;
+    box-shadow: 0 0 2px 2px rgba(39, 145, 71, 0.51);
 }
 
 .inputForm__input-error {
