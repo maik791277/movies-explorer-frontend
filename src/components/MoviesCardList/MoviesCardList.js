@@ -37,7 +37,7 @@ function MoviesCardList(props) {
    }, []);
 
    return (
-   <div className="moviesCardList">
+   <section className="moviesCardList">
       {isLoading ? (
       <Preloader />
       ) : (
@@ -68,7 +68,7 @@ function MoviesCardList(props) {
          )}
       </div>
       )}
-   </div>
+   </section>
    );
 }
 

@@ -81,11 +81,11 @@ function Profile(props) {
       :
       <div className="profile__container">
          <div className="profile__item">
-            <div className="profile__item-label">Имя</div>
+            <p className="profile__item-label">Имя</p>
             <div className="profile__item-value">{isProfileMasive.name}</div>
          </div>
          <div className="profile__item">
-            <div className="profile__item-label">E-mail</div>
+            <p className="profile__item-label">E-mail</p>
             <div className="profile__item-value">{isProfileMasive.email}</div>
          </div>
       </div>}
