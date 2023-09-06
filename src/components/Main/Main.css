@@ -1,0 +1,27 @@
+/*Promo*/
+@import "./Promo/Promo.css";
+/*AboutProject*/
+@import "./AboutProject/AboutProject.css";
+/*Techs*/
+@import "./Techs/Techs.css";
+/*AboutMe*/
+@import "./AboutMe/AboutMe.css";
+/*Portfolio*/
+@import "./Portfolio/Portfolio.css";
+/*SectionHeader*/
+@import "./SectionHeader/SectionHeader.css";
+
+.container {
+    padding: 0 70px;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .container {
+        padding: 0 18px;
+    }
+}

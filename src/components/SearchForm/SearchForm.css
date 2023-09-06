@@ -1,0 +1,134 @@
+.searchForm {
+    padding-top: 64px;
+}
+
+.searchForm__form {
+    width: 100%;
+}
+
+.searchForm__form-search-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.searchForm__form-search-field::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.searchForm__icon {
+    margin-top: 3px;
+    margin-left: 6px;
+}
+
+.searchForm__input {
+    color: #A0A0A0;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: none;
+    margin-top: 3px;
+    margin-left: 6px;
+    transition: 0.3s;
+}
+
+.searchForm__input:focus {
+    box-shadow: 0 0 16px 4px rgba(39, 145, 71, 0.51);;
+}
+
+
+.searchForm__input::placeholder {
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.searchForm__button {
+    padding: 0;
+    border: none;
+    background: none;
+    margin-top: 7px;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.searchForm__button:hover {
+    opacity: 0.8;
+}
+
+.searchForm__horizontal-line {
+    border-bottom: 1px solid #E8E8E8;
+    margin-top: 10px;
+}
+
+.searchForm__filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 880px) {
+    .searchForm {
+        padding-top: 80px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .searchForm {
+        padding-top: 86px;
+    }
+
+    .searchForm__icon {
+        display: none;
+    }
+
+    .searchForm__input {
+        text-align: left;
+        font-size: 18px;
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+
+    .searchForm__input::placeholder {
+        text-align: left;
+        left: 10px;
+        font-size: 18px;
+    }
+
+    .searchForm__button {
+        margin-top: 6px;
+        margin-right: 5px;
+    }
+
+    .searchForm__horizontal-line {
+        margin-top: 5px;
+    }
+
+    .searchForm__filter-title {
+        font-size: 11px;
+        line-height: 18px;
+    }
+
+    .searchForm__filter {
+        margin-top: 48px;
+    }
+}

@@ -1,0 +1,135 @@
+.regAuthBlock {
+    width: 100%;
+}
+
+.regAuthBlock__link-main {
+    transition: 0.3s;
+}
+
+.regAuthBlock__link-main:hover {
+    opacity: 0.7;
+}
+
+.regAuthBlock__link-img {
+    margin-bottom: 37px;
+}
+
+.regAuthBlock__heading {
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.regAuthBlock__form {
+    padding-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 380px;
+}
+
+.regAuthBlock__form-container {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.regAuthBlock__input-error {
+    position: absolute;
+    color: #EE3465;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    bottom: -2px;
+}
+
+.regAuthBlock__button {
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 100%;
+    height: 45px;
+    flex-shrink: 0;
+    background: #FF6838;
+    border: none;
+    border-radius: 3px;
+    user-select: none;
+    pointer-events: none;
+    transition: 0.3s;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.regAuthBlock__button:hover {
+    border: 1px solid #000;
+    opacity: 0.8;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.regAuthBlock__button_type_error {
+    user-select: auto;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.regAuthBlock__login {
+    margin-top: 16px;
+}
+
+.regAuthBlock__paragraph {
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.regAuthBlock__link {
+    color: #FF6838;
+    text-decoration: none;
+    margin-left: 6px;
+    transition: 0.3s;
+}
+
+.regAuthBlock__link:hover {
+    opacity: 0.7;
+}
+
+
+
+
+@media screen and (max-width: 480px) {
+    .regAuthBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .regAuthBlock__link-img {
+        margin-bottom: 47px;
+    }
+
+    .regAuthBlock__form {
+        padding-top: 80px;
+        min-height: 468px;
+    }
+
+    .regAuthBlock__button {
+        font-size: 12px;
+    }
+
+    .regAuthBlock__paragraph {
+        font-size: 12px;
+    }
+
+    .register__login {
+        margin-top: 14px;
+    }
+}

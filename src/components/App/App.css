@@ -1,0 +1,30 @@
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+}
+
+.app {
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+.app__page {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.app__content {
+    flex: 1;
+}
+
+a {
+    user-select: none;
+}
+

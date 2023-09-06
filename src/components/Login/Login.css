@@ -1,0 +1,36 @@
+.login {
+    padding: 70px 0 70px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__container {
+    max-width: 396px;
+    width: 100%;
+}
+
+.login__input {
+    margin-bottom: 20px;
+}
+
+.login__input:nth-child(2) {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 780px) {
+    .login {
+        padding: 232px 0 70px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login {
+        padding: 26px 0 70px 0;
+    }
+
+    .login__container {
+        padding: 30px;
+    }
+}

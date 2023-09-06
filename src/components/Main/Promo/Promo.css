@@ -1,0 +1,141 @@
+.promo {
+    width: 100%;
+    min-height: 574px;
+    background-color: #465DFF;
+    position: relative;
+}
+
+.promo__title{
+    padding-top: 75px;
+    max-width: 640px;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 58px;
+}
+
+.promo__title-major {
+    display: block;
+}
+
+.promo__description {
+    max-width: 310px;
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    opacity: 0.5;
+    line-height: normal;
+    margin-top: 36px;
+}
+
+.promo__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 129px;
+    height: 36px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background-color: rgba(240, 248, 255, 0);
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+    margin-top: 146px;
+    transition: 0.3s;
+}
+
+.promo__button:hover {
+    opacity: 0.7;
+}
+
+
+.promo__planet-icon {
+    position: absolute;
+    width: 310px;
+    height: 304px;
+    top: 74px;
+    right: 70px;
+}
+
+@media screen and (max-width: 1080px) {
+    .promo__title{
+        max-width: 680px;
+        padding-top: 50px;
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .promo__button {
+        margin-top: 200px;
+    }
+
+}
+
+@media screen and (max-width: 880px) {
+    .promo__container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .promo__planet-icon {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 140px;
+    }
+
+    .promo__title-major {
+        display: inline;
+    }
+
+    .promo__title{
+        text-align: center;
+    }
+
+    .promo__description {
+        text-align: center;
+        width: 260px;
+        margin-top: 20px;
+    }
+
+    .promo__button {
+        margin-top: 91px;
+        margin-bottom: 75px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .promo__title {
+        font-size: 30px;
+        line-height: 38px;
+        color: #FFF;
+        letter-spacing: -1.2px;
+        padding-top: 45px;
+    }
+
+    .promo__planet-icon {
+        width: 210px;
+        height: 206px;
+        margin-top: 70px;
+    }
+
+    .promo {
+        width: 100%;
+        min-height: 574px;
+        background-color: #465DFF;
+        position: relative;
+    }
+
+    .promo__button {
+        margin-top: 82px;
+        margin-bottom: 28px;
+    }
+}

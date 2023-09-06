@@ -1,0 +1,38 @@
+.inputForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputForm__name {
+    color: #A0A0A0;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.inputForm__input {
+    border-radius: 8px;
+    background: #F9F9F9;
+    border: none;
+    color: #000;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 378px;
+    padding-left: 14px;
+    margin-top: 10px;
+    height: 42px;
+    transition: 0.3s;
+}
+
+.inputForm__input:focus {
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(39, 145, 71, 0.51);
+}
+
+.inputForm__input-error {
+    color: red;
+}
