@@ -112,6 +112,7 @@
     border: none;
     background: none;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .burger__menu-button-close:hover {
