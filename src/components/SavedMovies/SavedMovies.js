@@ -16,9 +16,16 @@ function SavedMovies () {
    function getSaveMovies() {
       SaveMovies()
       .then((data) => {
-         setMovies(data);
-         setMoviesList(data)
-         setIsLoading(true);
+         if (Array.isArray(data) && data.length > 0) {
+            setMovies(data);
+            setMoviesList(data);
+            setIsLoading(true);
+         } else {
+            setMovies(null);
+            setMoviesList(null);
+            setIsLoading(false);
+            setNotFoundMovies(true);
+         }
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -46,13 +53,6 @@ function SavedMovies () {
 
       setNotFoundMovies(filteredMovies.length === 0);
    }
-
-   useEffect(() => {
-      if (moviesList === null || moviesList.length === 0) {
-         setMoviesList(null);
-      }
-   }, [moviesList]);
-
 
    useEffect(() => {
       getSaveMovies()
