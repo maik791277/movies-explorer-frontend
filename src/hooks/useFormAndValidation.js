@@ -15,7 +15,7 @@ export function useFormAndValidation(e) {
          setErrors((prevErrors) => ({ ...prevErrors, [name]: isValidEmail ? '' : 'Введите корректный email' }));
       } else if (type === 'password') {
          const isValidPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
-         setErrors((prevErrors) => ({ ...prevErrors, [name]: isValidPassword ? '' : 'Пароль должен содержать минимум 8 символов' }));
+         setErrors((prevErrors) => ({ ...prevErrors, [name]: isValidPassword ? '' : 'Пароль: 8+ символов, заглавная и строчная буквы, цифры.' }));
       } else {
          setErrors({ ...errors, [name]: e.target.validationMessage });
       }
