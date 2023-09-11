@@ -65,7 +65,7 @@ function Register(props) {
             minLength="2"
             nameInputText="E-mail"
             maxLength="40"
-            placeholder="Имя фамилия"
+            placeholder="E-mail"
             onChange={handleChange}
             value={values.register_email || ''}
             error={errors}
@@ -79,7 +79,7 @@ function Register(props) {
             minLength="8"
             nameInputText="Пароль"
             maxLength="40"
-            placeholder="Имя фамилия"
+            placeholder="Пароль"
             onChange={handleChange}
             value={values.register_password || ''}
             error={errors}
