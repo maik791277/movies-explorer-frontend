@@ -7,10 +7,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+}
+
+.errorPopup__visible {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        backdrop-filter: blur(0); /* Начальное значение размытия */
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        backdrop-filter: blur(10px); /* Конечное значение размытия */
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .errorPopup__overlay {
-    background: rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
     position: absolute;
     top: 0;
     left: 0;
@@ -29,7 +51,8 @@
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.49);
+    flex: 1 1;
 }
 
 .errorPopup__icon {
@@ -44,6 +67,7 @@
     font-weight: 400;
     line-height: 18px;
     margin-top: 40px;
+    min-height: 57px;
 }
 
 .errorPopup__closeButton {

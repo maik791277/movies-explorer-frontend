@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import logo from "../../images/logo.svg";
 
 function RegAuthBlock(props) {
+
    return(
    <section className="regAuthBlock">
       <Link className="regAuthBlock__link-main" to={"/"}>
@@ -12,7 +13,7 @@ function RegAuthBlock(props) {
          <div className="regAuthBlock__form-container">
             {props.children}
             <p className={`regAuthBlock__input-error`}>
-               {Object.values(props.errors).some(error => error) ? "Что-то пошло не так..." : ""}
+               {Object.values(props.errors).find(error => error) || ""}
             </p>
          </div>
          <button className={`regAuthBlock__button ${props.isValid ? 'regAuthBlock__button_type_error' : ''}`} type="submit">{props.buttonText}</button>

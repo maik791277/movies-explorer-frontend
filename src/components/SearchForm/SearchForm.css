@@ -60,6 +60,16 @@
     line-height: normal;
 }
 
+.searchForm__label {
+    position: absolute;
+    width: 100%;
+    bottom: -35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+}
+
 .searchForm__button {
     padding: 0;
     border: none;

@@ -1,0 +1,31 @@
+.searchResults {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchResults__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchResults__svg {
+    width: 100px;
+    height: 100px;
+}
+
+.search-results__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.search-results__text {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

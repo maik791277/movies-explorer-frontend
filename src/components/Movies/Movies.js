@@ -1,118 +1,179 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import {useEffect, useState} from "react";
-const moviesArray = [
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-66.userapi.com/c9763/u14937646/116030038/z_e2d3fc87.jpg',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-45.userapi.com/impg/md6_3IXZdPccX11S9vx_-Rt90MNyXC0AzXrE0w/1yVK1Q12ZyE.jpg?size=2000x869&quality=96&sign=21e3eaf1237b4f77b8690458d869d2ec&type=album',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-70.userapi.com/c9763/u14937646/116030038/z_c9844dc8.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне ',
-      link: 'https://sun9-39.userapi.com/c9763/u14937646/116030038/z_51fdd45c.jpg',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-68.userapi.com/c9763/u14937646/116030038/z_405b2ee5.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-68.userapi.com/c9763/u14937646/116030038/y_2d4a6dfb.jpg',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-72.userapi.com/c9763/u14937646/116030038/z_2bba0eaa.jpg',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-78.userapi.com/c9763/u14937646/116030038/z_45625e0d.jpg',
-      time: 97
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-74.userapi.com/c9763/u14937646/116030038/z_55e1ad7d.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-69.userapi.com/c9763/u14937646/116030038/z_7377dfe2.jpg',
-      time: 97
-   },
-   {
-      Name: '33 словаasdasdasd asdasd dasdasdas о дизайне',
-      link: 'https://sun9-73.userapi.com/c9763/u14937646/116030038/z_f295b343.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова aasdasd asdasdasdsad asdasdadо дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-   {
-      Name: '33 слова о дизайне',
-      link: 'https://sun9-36.userapi.com/c9763/u14937646/116030038/y_9c2633ed.jpg',
-      time: 97,
-      metrag: true
-   },
-];
+import { useState, useEffect } from "react";
+import { getMovies } from "../../utils/MoviesApi";
+import MoviesCard from "../MoviesCard/MoviesCard";
+import SearchResults from "../SearchResults/SearchResults";
+import {createMovie, SaveMovies} from "../../utils/MainApi";
 
-function Movies () {
-   const [showShortMovies, setShowShortMovies] = useState(false);
+function Movies() {
+   const [searchData, setSearchData] = useState({
+      searchQuery: "",
+      showShortMovies: false,
+   });
+   const [movies, setMovies] = useState(null);
+   const [isLoading, setIsLoading] = useState(false);
+   const [visibleCards, setVisibleCards] = useState(null);
+   const [notFoundMovies, setNotFoundMovies] = useState(false);
+   const [formSubmitted, setFormSubmitted] = useState(false);
+   const [saveMovies, setSaveMovies] = useState(null);
+
+   function getSaveMovies() {
+      SaveMovies()
+      .then((data) => {
+         setSaveMovies(data);
+      })
+      .catch((err) => console.log(err));
+   }
+
+   useEffect(() => {
+      getSaveMovies();
+   }, []);
+
+   function handleSubmit() {
+      if (!searchData.searchQuery) {
+         setFormSubmitted(true)
+         return;
+      }else {
+         setIsLoading(true);
+         setFormSubmitted(false)
+      }
+
+      getMovies()
+      .then((data) => {
+         const searchTerm = searchData.searchQuery.toLowerCase();
+
+         const shortMovies = searchData.showShortMovies
+         ? data.filter((movie) => movie.duration <= 50)
+         : data;
+
+         const filteredMovies = shortMovies.filter((movie) => {
+            const nameEN = movie.nameEN.toLowerCase();
+            const nameRU = movie.nameRU.toLowerCase();
+
+            return nameEN.includes(searchTerm) || nameRU.includes(searchTerm);
+         });
+
+         setMovies(filteredMovies);
+
+         setNotFoundMovies(filteredMovies.length === 0);
+
+         localStorage.setItem('movies', JSON.stringify(filteredMovies));
+         localStorage.setItem('searchData', JSON.stringify(searchData));
+
+         updateVisibleCards();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+         setIsLoading(false);
+      })
+   }
+
+   const loadMoreCards = () => {
+      if (window.innerWidth >= 881) {
+         setVisibleCards(visibleCards + 3);
+      } else if (window.innerWidth >= 280) {
+         setVisibleCards(visibleCards + 2);
+      }
+   };
+
+   const updateVisibleCards = () => {
+      if (window.innerWidth >= 881) {
+         setVisibleCards(12);
+      } else if (window.innerWidth >= 601) {
+         setVisibleCards(8);
+      } else if (window.innerWidth >= 280) {
+         setVisibleCards(5);
+      }
+   };
 
    function ClickShowShortMovies() {
-      setShowShortMovies(!showShortMovies)
+      setSearchData((prevState) => {
+         return {
+            ...prevState,
+            showShortMovies: !prevState.showShortMovies,
+         };
+      });
    }
-   return(
+
+   useEffect(() => {
+      if (movies === null || movies.length === 0) {
+         setMovies(null);
+      }
+   }, [movies]);
+
+   useEffect(() => {
+      let timeoutId;
+      const handleResize = () => {
+         clearTimeout(timeoutId);
+         timeoutId = setTimeout(() => {
+            updateVisibleCards();
+         }, 300);
+      };
+      window.addEventListener('resize', handleResize);
+      updateVisibleCards();
+
+      const savedMovies = JSON.parse(localStorage.getItem('movies'));
+      if (savedMovies) {
+         setMovies(savedMovies);
+      }
+      const searchData = JSON.parse(localStorage.getItem('searchData'));
+      if (searchData) {
+         setSearchData(searchData);
+      }
+
+      return () => {
+         window.removeEventListener('resize', handleResize);
+      };
+   }, []);
+
+   return (
    <div className="movies">
-      <SearchForm  setShowShortMovies={ClickShowShortMovies} showShortMovies={showShortMovies}/>
+      <SearchForm
+      formSubmitted={formSubmitted}
+      setShowShortMovies={ClickShowShortMovies}
+      showShortMovies={searchData.showShortMovies}
+      handleSubmit={handleSubmit}
+      setSearchText={(text) =>
+      setSearchData((prevState) => ({
+         ...prevState,
+         searchQuery: text,
+      }))}
+      searchText={searchData.searchQuery}/>
       <div className="movies__container">
-         <MoviesCardList  moviesArray={moviesArray} showShortMovies={showShortMovies}/>
+         {movies !== null && saveMovies !==null
+         ? (
+         <MoviesCardList
+         loadMoreCards={loadMoreCards}
+         isLoading={isLoading}
+         visibleCards={visibleCards}
+         moviesArray={movies}
+         showShortMovies={searchData.showShortMovies}>
+            {movies
+            .slice(0, visibleCards)
+            .map((movie) => {
+               return (
+               <li key={movie.id} className="moviesCardList__item">
+                  <MoviesCard
+                  saveMovies={saveMovies}
+                  movie={movie}
+                  name={movie.nameRU}
+                  time={movie.duration}
+                  image={`https://api.nomoreparties.co/${movie.image.url}`}
+                  metrag={movie.metrag}
+                  link={movie.trailerLink}
+                  getSaveMovies={getSaveMovies}/>
+               </li>
+               );
+            })}
+         </MoviesCardList>
+         ) : (
+         <SearchResults isLoading={isLoading} movies={movies} notFoundMovies={notFoundMovies}/>
+         )}
       </div>
    </div>
    );
- }
+}
 
- export default Movies;
+export default Movies;
+

@@ -1,67 +1,22 @@
-import MoviesCard from "../MoviesCard/MoviesCard";
-import {useEffect, useState} from "react";
 import Preloader from "../Preloader/Preloader";
+import {useLocation} from "react-router-dom";
 
 function MoviesCardList(props) {
-   const [isLoading, setIsLoading] = useState(true);
-   const [visibleCards, setVisibleCards] = useState(12);
-
-   const loadMoreCards = () => {
-      setVisibleCards(visibleCards + 4);
-   };
-
-   const updateVisibleCards = () => {
-      if (window.innerWidth >= 770) {
-         setVisibleCards(12);
-      } else if (window.innerWidth >= 480) {
-         setVisibleCards(8);
-      } else if (window.innerWidth <= 480) {
-         setVisibleCards(5);
-      }
-   };
-
-   useEffect(() => {
-      window.addEventListener('resize', updateVisibleCards);
-
-      updateVisibleCards();
-
-      return () => {
-         window.removeEventListener('resize', updateVisibleCards);
-      };
-   }, []);
-
-   useEffect(() => {
-      setTimeout(() => {
-         setIsLoading(false);
-      }, 1000);
-   }, []);
+   const location = useLocation();
+   const isSavedPage = location.pathname === '/saved-movies';
 
    return (
    <section className="moviesCardList">
-      {isLoading ? (
-      <Preloader />
-      ) : (
-      <div>
+      {props.isLoading ?
+      (<Preloader />)
+      :
+      (<div>
          <ul className="moviesCardList__list">
-            {props.moviesArray
-            .filter((movie) => !props.showShortMovies || movie.metrag)
-            .slice(0, visibleCards)
-            .map((movie, index) => {
-               return (
-               <li key={index} className="moviesCardList__item">
-                  <MoviesCard
-                  name={movie.Name}
-                  time={movie.time}
-                  image={movie.link}
-                  metrag={movie.metrag}
-                  />
-               </li>
-               );
-            })}
+            {props.children}
          </ul>
-         {visibleCards < props.moviesArray.length && (
+         {!isSavedPage && props.visibleCards < props.moviesArray.length && (
          <div className="moviesCardList__load-more">
-            <button type="button" onClick={loadMoreCards} className="moviesCardList__button">
+            <button type="button" onClick={props.loadMoreCards} className="moviesCardList__button">
                Ещё
             </button>
          </div>
