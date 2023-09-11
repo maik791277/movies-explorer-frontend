@@ -46,7 +46,7 @@ export function useFormAndValidation(e) {
          case 'password':
             const isValidPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
             if (!isValidPassword) {
-               errors[type] = 'Пароль должен содержать минимум 8 символов';
+               errors[type] = 'Пароль: 8+ символов, заглавная и строчная буквы, цифры.';
             }
             break;
          default:
