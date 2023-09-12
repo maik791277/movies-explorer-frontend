@@ -8,8 +8,9 @@ import MoviesSaveCard from "../MoviesSaveCard/MoviesSaveCard";
 function SavedMovies () {
    const [showShortMovies, setShowShortMovies] = useState(false);
    const [isLoading, setIsLoading] = useState(false);
-   const [movies, setMovies] = useState(null);
+   const [movies, setMovies] = useState([]);
    const [moviesList, setMoviesList] = useState(null);
+   const [pastMovies, setPastMovies] = useState([])
    const [searchQuery, setSearchQuery] = useState('');
    const [notFoundMovies, setNotFoundMovies] = useState(false);
 
@@ -19,12 +20,13 @@ function SavedMovies () {
          if (Array.isArray(data) && data.length > 0) {
             setMovies(data);
             setMoviesList(data);
+            setPastMovies(data)
             setIsLoading(true);
          } else {
-            setMovies(null);
+            setMovies([]);
             setMoviesList(null);
             setIsLoading(false);
-            setNotFoundMovies(true);
+            setNotFoundMovies(false);
          }
       })
       .catch((err) => console.log(err))
@@ -48,14 +50,18 @@ function SavedMovies () {
          return nameEN.includes(searchTerm) || nameRU.includes(searchTerm);
       });
 
-
+      setPastMovies(filteredMovies)
       setMoviesList(filteredMovies);
 
       setNotFoundMovies(filteredMovies.length === 0);
    }
 
    function ClickShowShortMovies() {
-      setShowShortMovies(!showShortMovies)
+         setShowShortMovies(!showShortMovies);
+         const shortMovies = !showShortMovies
+         ? pastMovies.filter((movie) => movie.duration <= 50)
+         : pastMovies;
+      setMoviesList(shortMovies);
    }
 
    useEffect(() => {
@@ -88,6 +94,8 @@ function SavedMovies () {
             .map((movie, index) => (
             <li key={index} className="moviesCardList__item">
                <MoviesSaveCard
+               pastMovies={pastMovies}
+               setPastMovies={setPastMovies}
                movies={movies}
                movie={movie}
                setMovies={setMovies}

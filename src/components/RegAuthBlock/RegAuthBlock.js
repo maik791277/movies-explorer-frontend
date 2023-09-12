@@ -16,7 +16,7 @@ function RegAuthBlock(props) {
                {Object.values(props.errors).find(error => error) || ""}
             </p>
          </div>
-         <button className={`regAuthBlock__button ${props.isValid ? 'regAuthBlock__button_type_error' : ''}`} type="submit">{props.buttonText}</button>
+         <button className={`regAuthBlock__button ${props.isValid ? 'regAuthBlock__button_type_error' : ''}`} disabled={props.disabledButton} type="submit">{props.buttonText}</button>
       </form>
       <div className="regAuthBlock__login">
          <p className="regAuthBlock__paragraph">

@@ -17,15 +17,15 @@ function MoviesCard(props) {
       if (favoriteMovies) {
          deleteMovie(saveMoviesId)
          .then(() => {
-            props.getSaveMovies()
             setFavoriteMovies(false)
+            props.setSaveMovies(props.saveMovies.filter(movie => movie._id !== saveMoviesId));
          })
          .catch((err) => console.log(err));
       } else {
             createMovie(props.movie)
             .then((data) => {
-               props.getSaveMovies()
                setFavoriteMovies(true)
+               props.setSaveMovies(prevMovies => [...prevMovies, data]);
             })
             .catch((err) => console.log(err))
       }

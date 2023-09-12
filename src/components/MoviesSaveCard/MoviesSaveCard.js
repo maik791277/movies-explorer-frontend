@@ -11,6 +11,8 @@ function MoviesCard(props) {
          props.setMovies(updatedMovies);
          const updatedMoviesList = props.moviesList.filter(movie => movie._id !== props.movie._id);
          props.setMoviesList(updatedMoviesList);
+         const updatedPastMovies = props.pastMovies.filter(movie => movie._id !== props.movie._id);
+         props.setPastMovies(updatedPastMovies);
       })
       .catch((err) => console.log(err));
    }

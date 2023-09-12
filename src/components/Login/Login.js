@@ -1,13 +1,15 @@
 import {useFormAndValidation} from "../../hooks/useFormAndValidation";
 import RegAuthBlock from "../RegAuthBlock/RegAuthBlock";
 import InputForm from "../InputForm/InputForm";
+import {useState} from "react";
 
 function Login(props) {
    const {values, handleChange, validateInputsHandleSubmit, errors, isValid} = useFormAndValidation({})
-
+   const [disabledButton, setDisabledButton] = useState(false)
 
    function handleSubmit(e) {
       e.preventDefault();
+      setDisabledButton(true)
 
       const emailErrors = validateInputsHandleSubmit('email', values.login_email);
       const passwordErrors = validateInputsHandleSubmit('password', values.login_password);
@@ -15,10 +17,11 @@ function Login(props) {
       const errors = { ...emailErrors, ...passwordErrors };
 
       if (Object.keys(errors).length === 0) {
-         props.handleSubmitLogin(values.login_email, values.login_password);
+         props.handleSubmitLogin(values.login_email, values.login_password, setDisabledButton);
       } else {
          props.setErrorMessage("Произошла ошибка валидации");
          props.setShowError(true);
+         props.setShowAllGoodIcon(false)
       }
    }
 
@@ -27,6 +30,7 @@ function Login(props) {
    <div className="login">
       <div className="login__container">
          <RegAuthBlock
+         disabledButton={disabledButton}
          errors={errors}
          isValid={isValid}
          onSubmit={handleSubmit}

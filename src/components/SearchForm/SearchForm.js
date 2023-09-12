@@ -22,7 +22,7 @@ function SearchForm(props) {
                onChange={(e) => props.setSearchText(e.target.value)}
                required
                />
-               <button onClick={handleSearch} type="submit" className="searchForm__button">
+               <button onClick={handleSearch} disabled={props.disabledButton} type="submit" className="searchForm__button">
                   <img className="searchForm__buttonIcon" src={searchButtonIcon} alt="Иконка кнопки поиска"/>
                </button>
                {props.formSubmitted && <label className="searchForm__label"> <p>Это поле не должно быть пустым</p> </label>}

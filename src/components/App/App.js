@@ -27,9 +27,10 @@ function App() {
       window.scrollTo(0, 0);
    };
 
-   function handleLoginFormSubmit ( email, password) {
+   function handleLoginFormSubmit ( email, password, setDisabledButton) {
       login(email, password)
       .then(() => {
+         setDisabledButton(false)
          usersMe()
          .then((data) => {
             updateUsers(data)
@@ -83,12 +84,14 @@ function App() {
                   loggedIn={isAuthenticated}/>} />
                   <Route path="/signup" element={<ProtectedRoute
                   element={Register}
+                  setShowAllGoodIcon={setShowAllGoodIcon}
                   setErrorMessage={setErrorMessage}
                   setShowError={setShowError}
                   handleSubmitLogin={handleLoginFormSubmit}
                   loggedIn={!isAuthenticated}/>} />
                   <Route path="/signin" element={<ProtectedRoute
                   element={Login}
+                  setShowAllGoodIcon={setShowAllGoodIcon}
                   setErrorMessage={setErrorMessage}
                   setShowError={setShowError}
                   handleSubmitLogin={handleLoginFormSubmit}

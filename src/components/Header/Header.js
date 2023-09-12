@@ -1,7 +1,6 @@
 import logo from '../../images/logo.svg';
 import userIcon from '../../images/icon__COLOR_icon-main.svg';
-import userIconWhite from '../../images/icon__COLOR_icon-main-white.svg';
-import {Link, NavLink, useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import CustomNavLink from "../CustomNavLink/CustomNavLink";
 import Burger from "../Burger/Burger";
 function Header(props) {

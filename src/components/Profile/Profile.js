@@ -7,6 +7,7 @@ import {useAuth} from "../../contexts/СurrentUser.js";
 function Profile(props) {
    const { user, updateAuthStatus, updateUsers } = useAuth();
    const [isEditing, setIsEditing] = useState(false)
+   const [disabledButton, setDisabledButton] = useState(false)
    const {values, handleChange, validateInputsHandleSubmit, errors, isValid, setValues, setIsValid} = useFormAndValidation({})
    const navigate = useNavigate();
    function editingClick() {
@@ -15,6 +16,7 @@ function Profile(props) {
 
    function handleSubmit(e) {
       e.preventDefault();
+      setDisabledButton(true)
 
       const nameErrors = validateInputsHandleSubmit('text', values.profile__name);
       const emailErrors = validateInputsHandleSubmit('email', values.profile__email);
@@ -34,28 +36,34 @@ function Profile(props) {
                props.setErrorMessage("Успешно отправлено и изменено.")
                props.setShowError(true)
                props.setShowAllGoodIcon(true)
+               setDisabledButton(false)
             })
             .catch((err) => {
                props.setErrorMessage(err)
                props.setShowError(true)
+               props.setShowAllGoodIcon(false)
             });
          } else {
             props.setErrorMessage("Нет изменений для сохранения")
             props.setShowError(true)
+            props.setShowAllGoodIcon(false)
          }
       } else {
          props.setErrorMessage("Произошла ошибка валидации")
          props.setShowError(true)
+         props.setShowAllGoodIcon(false)
       }
    }
 
    function handleSignOut() {
+      setDisabledButton(true)
       signOut()
       .then(() => {
          localStorage.removeItem('movies');
          localStorage.removeItem('searchData');
          updateUsers(null)
          updateAuthStatus(false)
+         setDisabledButton(false)
          navigate("/")
       })
       .catch((err) => alert(err))
@@ -119,7 +127,7 @@ function Profile(props) {
             </p>
             <button className={`profile__button-form 
             ${!isValid ? 'profile__button-form_error' : ''}
-            ${Object.values(errors).some(error => error) ? 'profile__button-form_error' : ''}`} type="submit" onClick={handleSubmit}>Сохранить</button>
+            ${Object.values(errors).some(error => error) ? 'profile__button-form_error' : ''}`} type="submit"  disabled={disabledButton} onClick={handleSubmit}>Сохранить</button>
          </div>
       </form>
       :

@@ -2,14 +2,15 @@ import InputForm from "../InputForm/InputForm";
 import {useFormAndValidation} from "../../hooks/useFormAndValidation";
 import RegAuthBlock from "../RegAuthBlock/RegAuthBlock";
 import { register } from "../../utils/MainApi";
-import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 function Register(props) {
    const {values, handleChange, validateInputsHandleSubmit, errors, isValid,} = useFormAndValidation({})
+   const [disabledButton, setDisabledButton] = useState(false)
 
    function handleSubmit(e) {
       e.preventDefault();
-
+      setDisabledButton(true)
       const emailErrors = validateInputsHandleSubmit('email', values.register_email);
       const passwordErrors = validateInputsHandleSubmit('password', values.register_password);
       const nameErrors = validateInputsHandleSubmit('text', values.register_name);
@@ -19,15 +20,18 @@ function Register(props) {
       if (Object.keys(errors).length === 0) {
          register(values.register_name, values.register_email, values.register_password)
          .then(() => {
-            props.handleSubmitLogin(values.register_email, values.register_password)
+            setDisabledButton(true)
+            props.handleSubmitLogin(values.register_email, values.register_password, setDisabledButton)
          })
          .catch((err) => {
             props.setErrorMessage(err);
             props.setShowError(true);
+            props.setShowAllGoodIcon(false)
          });
       } else {
          props.setErrorMessage("Произошла ошибка валидации");
          props.setShowError(true);
+         props.setShowAllGoodIcon(false)
       }
    }
 
@@ -35,6 +39,7 @@ function Register(props) {
    <div className="register">
       <div className="register__container">
          <RegAuthBlock
+         disabledButton={disabledButton}
          errors={errors}
          isValid={isValid}
          onSubmit={handleSubmit}
