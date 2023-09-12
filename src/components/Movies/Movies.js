@@ -20,8 +20,6 @@ function Movies() {
    const [formSubmitted, setFormSubmitted] = useState(false);
    const [saveMovies, setSaveMovies] = useState(null);
 
-   console.log(saveMovies)
-
    function getSaveMovies() {
       SaveMovies()
       .then((data) => {
