@@ -19,6 +19,7 @@ function App() {
    const [isNotHeader, setIsNotHeader] = useState(false);
    const [isNotFooter, setIsNotFooter] = useState(false);
    const [showError, setShowError] = useState(false);
+   const [showAllGoodIcon, setShowAllGoodIcon] = useState(false)
    const [errorMessage, setErrorMessage] = useState('');
    const location = useLocation();
    const navigate = useNavigate();
@@ -76,6 +77,7 @@ function App() {
                   loggedIn={isAuthenticated}/>} />
                   <Route path="/profile" element={<ProtectedRoute
                   element={Profile}
+                  setShowAllGoodIcon={setShowAllGoodIcon}
                   setErrorMessage={setErrorMessage}
                   setShowError={setShowError}
                   loggedIn={isAuthenticated}/>} />
@@ -97,6 +99,7 @@ function App() {
             {!isNotFooter && <Footer />}
          </div>
          <ErrorPopup
+         showAllGoodIcon={showAllGoodIcon}
          isVisible={showError}
          message={errorMessage}
          onClose={() => setShowError(false)}

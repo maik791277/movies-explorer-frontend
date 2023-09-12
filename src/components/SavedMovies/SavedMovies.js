@@ -54,14 +54,20 @@ function SavedMovies () {
       setNotFoundMovies(filteredMovies.length === 0);
    }
 
+   function ClickShowShortMovies() {
+      setShowShortMovies(!showShortMovies)
+   }
+
    useEffect(() => {
       getSaveMovies()
    },[])
 
+   useEffect(() => {
+      if (moviesList === null || moviesList.length === 0) {
+         setMoviesList(null);
+      }
+   }, [moviesList]);
 
-   function ClickShowShortMovies() {
-      setShowShortMovies(!showShortMovies)
-   }
    return(
    <div className="movies">
       <SearchForm

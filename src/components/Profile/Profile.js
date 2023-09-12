@@ -31,6 +31,9 @@ function Profile(props) {
                updateUsers(data)
                setIsEditing(!isEditing)
                setIsValid(false)
+               props.setErrorMessage("Успешно отправлено и изменено.")
+               props.setShowError(true)
+               props.setShowAllGoodIcon(true)
             })
             .catch((err) => {
                props.setErrorMessage(err)
