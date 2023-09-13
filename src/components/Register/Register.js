@@ -20,18 +20,19 @@ function Register(props) {
       if (Object.keys(errors).length === 0) {
          register(values.register_name, values.register_email, values.register_password)
          .then(() => {
-            setDisabledButton(true)
             props.handleSubmitLogin(values.register_email, values.register_password, setDisabledButton)
          })
          .catch((err) => {
             props.setErrorMessage(err);
             props.setShowError(true);
             props.setShowAllGoodIcon(false)
-         });
+         })
+         .finally(() => setDisabledButton(false));
       } else {
          props.setErrorMessage("Произошла ошибка валидации");
          props.setShowError(true);
          props.setShowAllGoodIcon(false)
+         setDisabledButton(false)
       }
    }
 

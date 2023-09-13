@@ -36,22 +36,24 @@ function Profile(props) {
                props.setErrorMessage("Успешно отправлено и изменено.")
                props.setShowError(true)
                props.setShowAllGoodIcon(true)
-               setDisabledButton(false)
             })
             .catch((err) => {
                props.setErrorMessage(err)
                props.setShowError(true)
                props.setShowAllGoodIcon(false)
-            });
+            })
+            .finally(() => setDisabledButton(false));
          } else {
             props.setErrorMessage("Нет изменений для сохранения")
             props.setShowError(true)
             props.setShowAllGoodIcon(false)
+            setDisabledButton(false)
          }
       } else {
          props.setErrorMessage("Произошла ошибка валидации")
          props.setShowError(true)
          props.setShowAllGoodIcon(false)
+         setDisabledButton(false)
       }
    }
 

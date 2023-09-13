@@ -22,6 +22,7 @@ function Login(props) {
          props.setErrorMessage("Произошла ошибка валидации");
          props.setShowError(true);
          props.setShowAllGoodIcon(false)
+         setDisabledButton(false)
       }
    }
 
