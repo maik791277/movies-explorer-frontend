@@ -60,15 +60,16 @@ function Profile(props) {
    function handleSignOut() {
       setDisabledButton(true)
       signOut()
-      .then(() => {
-         localStorage.removeItem('movies');
-         localStorage.removeItem('searchData');
-         updateUsers(null)
-         updateAuthStatus(false)
-         setDisabledButton(false)
-         navigate("/")
-      })
-      .catch((err) => alert(err))
+          .then(() => {
+             localStorage.removeItem('movies');
+             localStorage.removeItem('searchData');
+             updateUsers(null)
+             updateAuthStatus(false)
+             setDisabledButton(false)
+             navigate("/")
+          })
+          .catch((err) => alert(err))
+          .finally(() =>   setDisabledButton(false))
    }
 
    useEffect(() => {
@@ -148,7 +149,7 @@ function Profile(props) {
             <button type="button" className="profile__button" onClick={editingClick}>
                Редактировать
             </button>
-            <button type="button" className="profile__button" onClick={handleSignOut}>
+            <button type="button" className="profile__button" disabled={disabledButton} onClick={handleSignOut}>
                Выйти из аккаунта
             </button>
          </div>
