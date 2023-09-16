@@ -1,16 +1,14 @@
 import searchIcon from "../../images/icon.svg"
 import searchButtonIcon from "../../images/find.svg"
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import {useState} from "react";
 
 function SearchForm(props) {
-   const [searchText, setSearchText] = useState("");
 
    const handleSearch = (e) => {
       e.preventDefault();
-
-      console.log(searchText)
+      props.handleSubmit()
    };
+
    return(
       <section className="searchForm">
          <form className="searchForm__form">
@@ -20,13 +18,14 @@ function SearchForm(props) {
                className="searchForm__input"
                type="text"
                placeholder="Фильм"
-               value={searchText}
-               onChange={(e) => setSearchText(e.target.value)}
+               value={props.searchText}
+               onChange={(e) => props.setSearchText(e.target.value)}
                required
                />
-               <button onClick={handleSearch} type="submit" className="searchForm__button">
+               <button onClick={handleSearch} disabled={props.disabledButton} type="submit" className="searchForm__button">
                   <img className="searchForm__buttonIcon" src={searchButtonIcon} alt="Иконка кнопки поиска"/>
                </button>
+               {props.formSubmitted && <label className="searchForm__label"> <p>Это поле не должно быть пустым</p> </label>}
             </div>
             <div className="searchForm__filter">
                <FilterCheckbox className="searchForm__filterCheckbox" isChecked={props.showShortMovies} toggleSwitch={props.setShowShortMovies}/>

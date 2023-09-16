@@ -2,7 +2,6 @@ import { useNavigate} from "react-router-dom";
 
 function NotFound() {
    const navigate = useNavigate();
-   console.log(window.history.length)
 
    const handleButtonClick = () => {
       if (window.history.length > 2) {

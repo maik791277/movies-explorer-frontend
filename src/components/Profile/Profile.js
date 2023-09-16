@@ -1,45 +1,98 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useFormAndValidation} from "../../hooks/useFormAndValidation";
+import {signOut, updateUser} from "../../utils/MainApi";
+import {useAuth} from "../../contexts/СurrentUser.js";
 
 function Profile(props) {
+   const { user, updateAuthStatus, updateUsers } = useAuth();
    const [isEditing, setIsEditing] = useState(false)
-   const [isProfileMasive, setIsProfileMasive] = useState({
-      name: "Виталий",
-      email: "pochta@yandex.ru"
-   })
-   const {values, handleChange, errors, isValid, resetForm, setValues, setIsValid} = useFormAndValidation({})
+   const [disabledButton, setDisabledButton] = useState(false)
+   const {values, handleChange, validateInputsHandleSubmit, errors, isValid, setValues, setIsValid} = useFormAndValidation({})
    const navigate = useNavigate();
-
-   useEffect(() => {
-      setValues({
-         profile__name: isProfileMasive.name,
-         profile__email: isProfileMasive.email
-      })
-   }, [isEditing])
-
    function editingClick() {
       setIsEditing(!isEditing)
    }
 
    function handleSubmit(e) {
       e.preventDefault();
-      setIsProfileMasive({
-         name: values.profile__name,
-         email: values.profile__email
+      setDisabledButton(true)
+
+      const nameErrors = validateInputsHandleSubmit('text', values.profile__name);
+      const emailErrors = validateInputsHandleSubmit('email', values.profile__email);
+
+      const errors = { ...nameErrors, ...emailErrors };
+
+      if (Object.keys(errors).length === 0) {
+         if (
+         values.profile__name !== user.name ||
+         values.profile__email !== user.email
+         ) {
+            updateUser(values.profile__name, values.profile__email)
+            .then((data) => {
+               updateUsers(data)
+               setIsEditing(!isEditing)
+               setIsValid(false)
+               props.setErrorMessage("Успешно отправлено и изменено.")
+               props.setShowError(true)
+               props.setShowAllGoodIcon(true)
+            })
+            .catch((err) => {
+               props.setErrorMessage(err)
+               props.setShowError(true)
+               props.setShowAllGoodIcon(false)
+            })
+            .finally(() => setDisabledButton(false));
+         } else {
+            props.setErrorMessage("Нет изменений для сохранения")
+            props.setShowError(true)
+            props.setShowAllGoodIcon(false)
+            setDisabledButton(false)
+         }
+      } else {
+         props.setErrorMessage("Произошла ошибка валидации")
+         props.setShowError(true)
+         props.setShowAllGoodIcon(false)
+         setDisabledButton(false)
+      }
+   }
+
+   function handleSignOut() {
+      setDisabledButton(true)
+      signOut()
+          .then(() => {
+             localStorage.removeItem('movies');
+             localStorage.removeItem('searchData');
+             updateUsers(null)
+             updateAuthStatus(false)
+             setDisabledButton(false)
+             navigate("/")
+          })
+          .catch((err) => alert(err))
+          .finally(() =>   setDisabledButton(false))
+   }
+
+   useEffect(() => {
+      setValues({
+         profile__name: user.name,
+         profile__email: user.email
       })
-      setIsEditing(!isEditing)
-      setIsValid(false)
-   }
-   
-   function isAuthorizedExit() {
-      props.isAuthorized(false)
-      navigate("/")
-   }
+   }, [user.email, user.name, isEditing, setValues])
+
+   useEffect(() => {
+      if (
+      values.profile__name === user.name &&
+      values.profile__email === user.email
+      ) {
+         setIsValid(false);
+      } else {
+         setIsValid(true);
+      }
+   }, [values.profile__name, values.profile__email, user.name, user.email, setIsValid]);
 
    return(
    <section className="profile">
-      <h1 className="profile__title">Привет, Виталий!</h1>
+      <h1 className="profile__title">Привет, {user.name}!</h1>
       {isEditing ?
       <form className="profile__container" noValidate>
          <div className="profile__item">
@@ -73,20 +126,22 @@ function Profile(props) {
          </div>
          <div className="profile__button-container-form">
             <p className={`profile__input-error`}>
-               {Object.values(errors).some(error => error) ? "При обновлении профиля произошла ошибка." : ""}
+               {Object.values(errors).find(error => error) || ""}
             </p>
-            <button type="submit" className={`profile__button-form ${!isValid ? 'profile__button-form_error' : ''}`} type="submit" onClick={handleSubmit}>Сохранить</button>
+            <button className={`profile__button-form 
+            ${!isValid ? 'profile__button-form_error' : ''}
+            ${Object.values(errors).some(error => error) ? 'profile__button-form_error' : ''}`} type="submit"  disabled={disabledButton} onClick={handleSubmit}>Сохранить</button>
          </div>
       </form>
       :
       <div className="profile__container">
          <div className="profile__item">
             <p className="profile__item-label">Имя</p>
-            <div className="profile__item-value">{isProfileMasive.name}</div>
+            <div className="profile__item-value">{user.name}</div>
          </div>
          <div className="profile__item">
             <p className="profile__item-label">E-mail</p>
-            <div className="profile__item-value">{isProfileMasive.email}</div>
+            <div className="profile__item-value">{user.email}</div>
          </div>
       </div>}
       {!isEditing && <div className="profile__links">
@@ -94,7 +149,7 @@ function Profile(props) {
             <button type="button" className="profile__button" onClick={editingClick}>
                Редактировать
             </button>
-            <button type="button" className="profile__button" onClick={isAuthorizedExit}>
+            <button type="button" className="profile__button" disabled={disabledButton} onClick={handleSignOut}>
                Выйти из аккаунта
             </button>
          </div>

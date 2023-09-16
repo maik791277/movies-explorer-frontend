@@ -39,6 +39,8 @@
 @import "./components/NotFound/NotFound.css";
 /*ErrorPopup*/
 @import "./components/ErrorPopup/ErrorPopup.css";
+/*ErrorPopup*/
+@import "./components/SearchResults/SearchResults.css";
 
 .scroll-locked {
     overflow-y: hidden;
